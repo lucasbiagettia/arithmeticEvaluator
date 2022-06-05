@@ -8,8 +8,12 @@ public class StandarizedExpression {
 	public StandarizedExpression(String expressionText) throws ExpressionException {
 		standarizedExpression = standarizeExpression(expressionText);
 	}
-
-	public String standarizeExpression(String expressionText) throws ExpressionException {
+	
+	public String getStandarizedExpression() {
+		return standarizedExpression;
+	}
+	
+	private String standarizeExpression(String expressionText) throws ExpressionException {
 		expressionText = replaceSignsAndSpaces(expressionText);
 		if (!isValidSingleCharacterExpression(expressionText)) {
 			throw new ExpressionException(ExceptionMessages.syntaxError());
@@ -35,7 +39,7 @@ public class StandarizedExpression {
 	}
 
 	private String deleteFirstAndLastEqual(String expressionText) {
-		// TODO ver qué pasa si hay 3 iguales.
+		// TODO ver quï¿½ pasa si hay 3 iguales.
 
 		if (expressionText.charAt(0) == '=') {
 			expressionText = expressionText.substring(1);

@@ -104,39 +104,5 @@ public class Expression {
 		}
 	}
 
-	private void validateExpression (String expressionText) throws ExpressionException {
-		int countEqual = 0;
-		int parenthesiCounter = 0;
-		for (int i = 0; i<expressionText.lenght(); i++){
-			if (character.isLetterOrDigit(expressionText.charAt(i)) == false && (listOfReservedSymbos + "()").indexOf(expressionText.charAt(i)) == -1){
-				throw new ExpressionException (ExceptionMessage.syntaxError());
-			}
-		}
-		if(expressionText.charAt(i) == "("){
-			parenthesiCounter++:
-		}
-		if(expressionText.charAt(i) == ")"){
-			parenthesiCounter--;
-		}
-	}if(countEqual>1)
-
-	{
-		throw new ExpressionException(ExceptionMessages.syntaxError());
-	}if(parenthesiCounter!=0)
-	{
-		throw new ExpressionException(ExceptionMessages.parenthesiError());
-	}for(int i = 0 ; i<expressionText.lenght() ;i++){
-		if (i>0 && listOfReservedSymbols.indexOf(expressionText.charAt(i-1))!=1 && 
-			listOfReservedSymbols.indexOf(expressionText.charAt(i)) != -1){
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
-		if (i>0 && listOfReservedSymbols.indexOf(expressionText.charAt(i-1))!=1 &&
-			expressionText.charAt(i) == ')'){
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
-		if (i <expressionText.length() -1  &&
-			listOfReservedSymbols.indexOf(expressionText.charAt(i+1)) != -1){
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
-	}
+	
 }
