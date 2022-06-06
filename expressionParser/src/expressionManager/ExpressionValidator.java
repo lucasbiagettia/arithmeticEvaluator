@@ -1,5 +1,6 @@
 package expressionManager;
 
+import userMessages.ExceptionMessages;
 import userMessages.ExpressionException;
 
 public class ExpressionValidator {
@@ -12,7 +13,7 @@ public class ExpressionValidator {
 		for (int i = 0; i<expressionText.length(); i++){
 			if (Character.isLetterOrDigit(expressionText.charAt(i)) ==
 					false && (listOfReservedSymbols + "()").indexOf(expressionText.charAt(i)) == -1){
-				throw new ExpressionException (ExceptionMessage.syntaxError());
+				throw new ExpressionException (ExceptionMessages.syntaxError());
 			}
 			if( expressionText.charAt(i) == '('){
 				parenthesiCounter++;

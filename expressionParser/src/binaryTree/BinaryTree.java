@@ -5,6 +5,7 @@ import java.util.Scanner;
 import element.Element;
 import expressionManager.Expression;
 import userMessages.ExpressionException;
+import userMessages.UserMessages;
 
 
 public class BinaryTree implements IBinaryTree {
@@ -47,17 +48,17 @@ public class BinaryTree implements IBinaryTree {
 		}
 	}
 
-	public double InOrderResult() throws ExpressionException {
+	public double inOrderResult() throws ExpressionException {
 		if (this != null) {
 			switch (this.element.getTypeOfElement()){
 			case operand :
 				return this.element.getValue();
 
 			case operator:
-				return this.element.solveOperation(leftBranch.inOrderResult () , rightBranch.inOrderResult()) ;
+				return this.element.solveOperation(leftBranch.inOrderResult() , rightBranch.inOrderResult()) ;
 
 			case variable:
-				System.out.pr1neln (UserMessages.insterValueOfTheVariable(elemenet.getVariableName()));
+				System.out.pr1neln (UserMessages.insterValueOfTheVariable(element.getVariableName()));
 				Expression subExpression;
 				try (Scanner scan = new Scanner(System.in)){
 					String str = scan.nextLine ();
@@ -77,7 +78,7 @@ public class BinaryTree implements IBinaryTree {
 		if (this.leftBranch == null || this.rightBranch == null) {
 			throw new ExpressionException(ExceptionMessages.invalidOperation());
 		} else {
-			return this.leftBranch.inOrderResult() == this.rightBranch.inOrderResult();
+			return this.leftBranch.InOrderResult() == this.rightBranch.InOrderResult();
 		}
 	}
 }

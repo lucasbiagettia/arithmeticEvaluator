@@ -1,5 +1,6 @@
 package expressionManager;
 
+import userMessages.ExceptionMessages;
 import userMessages.ExpressionException;
 
 public class StandarizedExpression {
@@ -39,7 +40,7 @@ public class StandarizedExpression {
 	}
 
 	private String deleteFirstAndLastEqual(String expressionText) {
-		// TODO ver qu� pasa si hay 3 iguales.
+		// TODO ver que pasa si hay 3 iguales.
 
 		if (expressionText.charAt(0) == '=') {
 			expressionText = expressionText.substring(1);
