@@ -2,14 +2,14 @@ package binaryTree;
 
 import java.util.Scanner;
 
-import element.Element;
+import element.IElement;
 import expressionManager.Expression;
 import userMessages.ExpressionException;
 import userMessages.UserMessages;
 
 
 public class BinaryTree implements IBinaryTree {
-	Element element;
+	IElement element;
 	BinaryTree leftBranch;
 	BinaryTree rightBranch;
 
@@ -19,7 +19,7 @@ public class BinaryTree implements IBinaryTree {
 		rightBranch = null;
 	}
 
-	public BinaryTree add (Element element){
+	public BinaryTree add (IElement element){
 		if (this.element == null){
 			this.element = element;
 			return this;
