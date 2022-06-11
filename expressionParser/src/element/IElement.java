@@ -2,11 +2,13 @@ package element;
 
 public interface IElement {
 
+	public TypeOfElement getTypeOfElement();
+	
 	public int getPriority();
 
-	public TypeOfElement getTypeOfElement();
-
 	public double getValue();
+	
+	public double solveOperation();
 
 }
 
