@@ -30,14 +30,14 @@ public class BinaryTree implements IBinaryTree {
 			actualNode.element=element;
 			//En este caso se mueve la raiz hacia este nodo y lo demás es agregado al brazo derecho
 			// TODO implement compareTo method
-			if (this.element.getPriority() <= actualNode.element.getPriority()){
+			if (!this.element.hasMorePriority(actualNode.element)){
 				actualNode.leftBranch = this;
 				return actualNode;
 			}else{
 				BinaryTree auxNode = this;
 				BinaryTree proxNode = this.rightBranch;
 				// Mientras la prioridad del de la izquierda sea mayor sigo bajando
-				while (proxNode != null && proxNode.element.getPriority() > actualNode.element.getPriority()) {
+				while (proxNode != null && proxNode.element.hasMorePriority(actualNode.element) {
 					auxNode = auxNode.rightBranch;
 					proxNode = proxNode.rightBranch;
 				}
@@ -54,7 +54,7 @@ public class BinaryTree implements IBinaryTree {
 			case operand :
 				return this.element.getValue();
 
-			case operator:
+			case arithmeticOperator:
 				return this.element.solveOperation(leftBranch.inOrderResult() , rightBranch.inOrderResult()) ;
 
 			case variable:
