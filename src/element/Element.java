@@ -1,11 +1,13 @@
 package element;
 
-import expressionManager.Solution;
+import userMessages.ExceptionMessages;
+import userMessages.ExpressionException;
 
 public abstract class Element {
 	private TypeOfElement typeOfElement;
 	private int priority;
-	private abstract int value;
+	private int value;
+	private char symbol;
 
 	public TypeOfElement getTypeOfElement() {
 		return this.typeOfElement;
@@ -15,16 +17,23 @@ public abstract class Element {
 		return this.priority;
 	}
 	
-	public void solveThis(Element leftElement, Element rightElement, Solution solution) {
-		switch (this.typeOfElement) {
-		case booleanOperator:
-		break;
-		case arithmeticOperator:
-		break;
-		case operand:
-		break;
-		case variable:
-		break;
+	public abstract boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException;
+	
+	public abstract double solveArithmetic(Double leftElement, Double rightElement) throws ExpressionException;
+	
+	public double getValue () throws ExpressionException {
+		if (typeOfElement == TypeOfElement.operand)
+			return value;
+		else {
+			throw new ExpressionException(ExceptionMessages.syntaxError());
+		}
+	}
+	
+	public double getSymbol() throws ExpressionException {
+		if (typeOfElement != TypeOfElement.operand)
+			return symbol;
+		else {
+			throw new ExpressionException(ExceptionMessages.syntaxError());
 		}
 	}
 	

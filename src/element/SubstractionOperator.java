@@ -2,7 +2,7 @@ package element;
 
 import userMessages.ExpressionException;
 
-public class AdditionOperator extends Element{
+public class SubstractionOperator extends Element{
 	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
 	private final int priority = 10;
 	private final int value = (Integer) null;
@@ -15,7 +15,7 @@ public class AdditionOperator extends Element{
 
 	@Override
 	public double solveArithmetic(Double leftElement, Double rightElement) {
-		return leftElement + rightElement;
+		return leftElement - rightElement;
 	}
 
 

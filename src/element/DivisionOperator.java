@@ -2,7 +2,7 @@ package element;
 
 import userMessages.ExpressionException;
 
-public class AdditionOperator extends Element{
+public class DivisionOperator extends Element{
 	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
 	private final int priority = 10;
 	private final int value = (Integer) null;
