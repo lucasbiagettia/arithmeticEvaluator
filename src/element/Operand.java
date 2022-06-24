@@ -2,7 +2,7 @@ package element;
 
 import userMessages.ExpressionException;
 
-public class Operand extends Element {
+public class Operand extends IElement {
 	Double value;
 	
 	public Operand (double theValue) {

@@ -1,8 +1,10 @@
-package element;
+package element.arithmeticOperators;
 
+import element.IElement;
+import element.TypeOfElement;
 import userMessages.ExpressionException;
 
-public class DivisionOperator extends Element{
+public class DivisionOperator extends IElement{
 	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
 	private final int priority = 50;
 	private final int value = (Integer) null;
