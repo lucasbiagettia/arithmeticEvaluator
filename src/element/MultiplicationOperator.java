@@ -4,7 +4,7 @@ import userMessages.ExpressionException;
 
 public class MultiplicationOperator extends Element{
 	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
-	private final int priority = 10;
+	private final int priority = 50;
 	private final int value = (Integer) null;
 	
 	@Override
@@ -15,7 +15,7 @@ public class MultiplicationOperator extends Element{
 
 	@Override
 	public double solveArithmetic(Double leftElement, Double rightElement) {
-		return leftElement + rightElement;
+		return leftElement * rightElement;
 	}
 
 

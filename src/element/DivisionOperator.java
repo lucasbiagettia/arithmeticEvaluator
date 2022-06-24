@@ -4,7 +4,7 @@ import userMessages.ExpressionException;
 
 public class DivisionOperator extends Element{
 	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
-	private final int priority = 10;
+	private final int priority = 50;
 	private final int value = (Integer) null;
 	
 	@Override
@@ -14,10 +14,11 @@ public class DivisionOperator extends Element{
 	}
 
 	@Override
-	public double solveArithmetic(Double leftElement, Double rightElement) {
+	public double solveArithmetic(Double leftElement, Double rightElement) throws ExpressionException {
+		if (rightElement == 0) {
+			throw new ExpressionException("Error");
+		}else {
 		return leftElement + rightElement;
+		}
 	}
-
-
-
 }

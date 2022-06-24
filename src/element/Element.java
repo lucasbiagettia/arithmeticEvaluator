@@ -6,7 +6,6 @@ import userMessages.ExpressionException;
 public abstract class Element {
 	private TypeOfElement typeOfElement;
 	private int priority;
-	private int value;
 	private char symbol;
 
 	public TypeOfElement getTypeOfElement() {
@@ -20,14 +19,6 @@ public abstract class Element {
 	public abstract boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException;
 	
 	public abstract double solveArithmetic(Double leftElement, Double rightElement) throws ExpressionException;
-	
-	public double getValue () throws ExpressionException {
-		if (typeOfElement == TypeOfElement.operand)
-			return value;
-		else {
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
-	}
 	
 	public double getSymbol() throws ExpressionException {
 		if (typeOfElement != TypeOfElement.operand)
