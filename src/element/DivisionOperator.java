@@ -18,7 +18,7 @@ public class DivisionOperator extends Element{
 		if (rightElement == 0) {
 			throw new ExpressionException("Error");
 		}else {
-		return leftElement + rightElement;
+		return leftElement / rightElement;
 		}
 	}
 }
