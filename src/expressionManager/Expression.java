@@ -27,7 +27,7 @@ public class Expression {
 			return Double.toString(finalValue);
 	}
 
-	public double qetFinalValue() {
+	public double getFinalValue() {
 		return finalValue;
 	}
 

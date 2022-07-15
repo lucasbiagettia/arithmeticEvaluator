@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import element.IElement;
 import expressionManager.Expression;
+import userMessages.ExceptionMessages;
 import userMessages.ExpressionException;
 import userMessages.UserMessages;
 
@@ -37,7 +38,7 @@ public class BinaryTree implements IBinaryTree {
 				BinaryTree auxNode = this;
 				BinaryTree proxNode = this.rightBranch;
 				// Mientras la prioridad del de la izquierda sea mayor sigo bajando
-				while (proxNode != null && proxNode.element.hasMorePriority(actualNode.element) {
+				while (proxNode != null && proxNode.element.hasMorePriority(actualNode.element)) {
 					auxNode = auxNode.rightBranch;
 					proxNode = proxNode.rightBranch;
 				}
@@ -78,7 +79,7 @@ public class BinaryTree implements IBinaryTree {
 		if (this.leftBranch == null || this.rightBranch == null) {
 			throw new ExpressionException(ExceptionMessages.invalidOperation());
 		} else {
-			return this.leftBranch.InOrderResult() == this.rightBranch.InOrderResult();
+			return this.leftBranch.inOrderResult() == this.rightBranch.inOrderResult();
 		}
 	}
 }

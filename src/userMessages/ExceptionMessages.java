@@ -13,4 +13,14 @@ public class ExceptionMessages {
 		return null;
 	}
 
+	public static String incompatibleElement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String invalidOperation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
