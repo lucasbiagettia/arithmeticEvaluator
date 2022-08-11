@@ -39,7 +39,6 @@ public class Expression {
 		standarizedExpression = new StandarizedExpression(expressionText);	
 		
 		addArithmeticOperators();
-		addComparisonOperators();
 		expressionText = standarizeExpression(expressionText);
 		validateExpression(expressionText);
 		addElementsToBinaryTree(expressionText);

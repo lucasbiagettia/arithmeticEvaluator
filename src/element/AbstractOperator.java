@@ -2,11 +2,12 @@ package element;
 
 public abstract class AbstractOperator implements IElement {
 	
-	private Character symbol;
+	public abstract AbstractOperator getInstance(Character theSymbol);
 	
-	public Character getSymbol() {
-		return symbol;
+	public abstract Character getSymbol();
+	
+	public TypeOfElement getTypeOfElement() {
+		TypeOfElement.OPERATOR;
 	}
 	
-	public abstract AbstractOperator getInstance(Character theSymbol);
 }

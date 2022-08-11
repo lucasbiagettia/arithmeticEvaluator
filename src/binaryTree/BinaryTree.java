@@ -52,7 +52,7 @@ public class BinaryTree implements IBinaryTree {
 	public double inOrderResult() throws ExpressionException {
 		if (this != null) {
 			switch (this.element.getTypeOfElement()){
-			case operand :
+			case OPERAND :
 				return this.element.getValue();
 
 			case arithmeticOperator:

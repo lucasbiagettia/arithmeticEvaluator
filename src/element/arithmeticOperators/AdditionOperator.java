@@ -4,24 +4,13 @@ import binaryTree.BinaryTree;
 import element.AbstractOperator;
 import element.IElement;
 import element.TypeOfElement;
-import expressionManager.Solution;
 import userMessages.ExpressionException;
 
 public class AdditionOperator extends AbstractOperator{
-	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
-	private final int priority = 10;
-	private final int value = (Integer) null;
 	
-	@Override
-	public boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException {
-		//TODO definir expresión
-		throw new ExpressionException("Error");
-	}
-
-	@Override
-	public double solveArithmetic(Double leftElement, Double rightElement) {
-		return leftElement + rightElement;
-	}
+	private static AdditionOperator additionOperator = null;
+	
+	private AdditionOperator() {}
 
 	@Override
 	public int getPriority() {
@@ -30,17 +19,22 @@ public class AdditionOperator extends AbstractOperator{
 	}
 
 	@Override
-	public Solution solveThis(BinaryTree leftNode, BinaryTree rightNode, Solution solution) {
-		// TODO Auto-generated method stub
-		return null;
+	public double solve(Double leftNode, Double rightNode) {
+		return leftNode + rightNode;
 	}
 
 	@Override
-	public AbstractOperator getInstance(Character theSymbol) {
-		// TODO Auto-generated method stub
-		return null;
+	public static AbstractOperator getInstance(Character theSymbol) {
+		if (additionOperator == null) {
+			additionOperator = new AdditionOperator();
+		}
+		return additionOperator;
 	}
 
-
+	@Override
+	public Character getSymbol() {
+		return '+';
+	}
+		
 
 }

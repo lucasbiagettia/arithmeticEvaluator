@@ -1,6 +1,5 @@
 package element;
 
 public enum TypeOfElement {
-	operand, booleanOperator, arithmeticOperator, variable
-
+	OPERAND, OPERATOR, VARIABLE
 }
