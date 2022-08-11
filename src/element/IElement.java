@@ -1,7 +1,6 @@
 package element;
 
 import binaryTree.BinaryTree;
-import expressionManager.Solution;
 
 public interface IElement {
 
@@ -9,7 +8,7 @@ public interface IElement {
 	
 	public int getPriority();
 	
-	public abstract Solution solveThis (BinaryTree leftNode, BinaryTree rightNode, Solution solution);
+	public double solve (BinaryTree leftNode, BinaryTree rightNode);
 	
 	public default boolean hasMorePriority(IElement toCompare) {
 		return this.getPriority() > toCompare.getPriority();

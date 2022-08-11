@@ -1,9 +1,12 @@
 package element;
 
-public abstract class AbstractOperator extends IElement {
+public abstract class AbstractOperator implements IElement {
+	
 	private Character symbol;
 	
-	public abstract Character getSymbol();
+	public Character getSymbol() {
+		return symbol;
+	}
 	
 	public abstract AbstractOperator getInstance(Character theSymbol);
 }
