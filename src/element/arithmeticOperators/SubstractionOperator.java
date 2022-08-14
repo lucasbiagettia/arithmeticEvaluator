@@ -3,39 +3,34 @@ package element.arithmeticOperators;
 import element.AbstractOperator;
 import element.IElement;
 
-public final class SubstractionOperator extends AbstractOperator{
-	private final SubstractionOperator operator = new SubstractionOperator();
-	private final int priority = 10;
-	private final Character symbol = '-';
-	
-	@Override
-	public IElement getInstance() {
+public final class SubstractionOperator extends AbstractOperator {
+	private static final SubstractionOperator operator = new SubstractionOperator();
+	private static final Integer PRIORITY = 10;
+	private static final Character SYMBOL = '-';
+
+	public static SubstractionOperator getInstance() {
 		return operator;
 	}
-	
-	private SubstractionOperator() {}
-	
+
+	private SubstractionOperator() {
+	}
+
 	@Override
 	public double solve(Double leftElement, Double rightElement) {
+		if (leftElement == null) {
+			leftElement = 0.;
+		}
 		return leftElement - rightElement;
 	}
 
-
 	@Override
-	public int getPriority() {
-		return priority;
+	public Integer getPriority() {
+		return PRIORITY;
 	}
-
-
-
-
 
 	@Override
 	public Character getSymbol() {
-		// TODO Auto-generated method stub
-		return null;
+		return SYMBOL;
 	}
-
-
 
 }

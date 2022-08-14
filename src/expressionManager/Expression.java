@@ -3,6 +3,11 @@ package expressionManager;
 import java.util.ArrayList;
 
 import binaryTree.BinaryTree;
+import element.Operand;
+import element.arithmeticOperators.AdditionOperator;
+import element.arithmeticOperators.DivisionOperator;
+import element.arithmeticOperators.MultiplicationOperator;
+import element.arithmeticOperators.SubstractionOperator;
 import userMessages.ExpressionException;
 
 public class Expression {
@@ -15,25 +20,7 @@ public class Expression {
 	private boolean isThereAComparisonSign = false;
 	private boolean isTheEqCorrect;
 
-	public String getResult() {
-		if (isThereAComparisonSign) {
-			if (isTheEqCorrect) {
 
-				return UserMessages._true();
-			} else {
-				return UserMessages._false();
-			}
-		} else
-			return Double.toString(finalValue);
-	}
-
-	public double getFinalValue() {
-		return finalValue;
-	}
-
-	public boolean qetIsTheEqCorrect() {
-		return isTheEqCorrect;
-	}
 
 	public Expression(String expressionText) throws ExpressionException {
 		standarizedExpression = new StandarizedExpression(expressionText);	
@@ -43,12 +30,12 @@ public class Expression {
 		validateExpression(expressionText);
 		addElementsToBinaryTree(expressionText);
 
-		if (isThereAComparisonSign) {
-			isTheEqCorrect = binaryTreeExpression.inOrderComparison();
-		} else {
-			finalValue = binaryTreeExpression.inOrderResult();
-		}
 	}
+	
+	public double getFinalValue() {
+		return finalValue;
+	}
+
 
 	private Expression(String expressionText, boolean ignoreValidation) throws ExpressionException {
 		addArithmeticOperators();
@@ -57,18 +44,14 @@ public class Expression {
 	}
 
 	private void addArithmeticOperators() throws ExpressionException {
-		int actualSize = avaibleOperators.size();
-		avaibleOperators.add(new AdditionOperator());
-		avaibleOperators.add(new SubstractionOperator());
-		avaibleOperators.add(new DivisionOperator());
-		avaibleOperators.add(new MultiplicationOperator());
-
-		for (int i = actualSize; i < avaibleOperators.size(); i++) {
-			listOfReservedSymbos = listOfReservedSymbols + avaibleOperators.get(i).getSymbol();
-		}
+		listOfReservedSymbols += AdditionOperator.getInstance().getSymbol();
+		listOfReservedSymbols += SubstractionOperator.getInstance().getSymbol();
+		listOfReservedSymbols += DivisionOperator.getInstance().getSymbol();
+		listOfReservedSymbols += MultiplicationOperator.getInstance().getSymbol();
+		
 	}
 
-	private void addElementsToBinaryTree (String expressionText9 throws ExpressionException {
+	private void addElementsToBinaryTree (String expressionText) throws ExpressionException {
 		for (int i = 0; i <expressionText.lenght(); i++){
 			if (expressionText.charAt(i) == '(' {
 				String aux = "";

@@ -2,33 +2,35 @@ package element.arithmeticOperators;
 
 import element.AbstractOperator;
 import element.IElement;
-import element.TypeOfElement;
 import userMessages.ExpressionException;
 
-public final class DivisionOperator extends AbstractOperator{
-	private final DivisionOperator operator = new DivisionOperator();
-	private final int priority = 50;
-	private final Character symbol = '/';
-	
-	@Override
-	public IElement getInstance() {
+public final class DivisionOperator extends AbstractOperator {
+	private final static DivisionOperator operator = new DivisionOperator();
+	private final int PRIORITY = 50;
+	private final Character SYMBOL= '/';
+
+	public static DivisionOperator getInstance() {
 		return operator;
 	}
-	
-	private DivisionOperator() {}
-	
-	@Override
-	public boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException {
-		//TODO definir expresión
-		throw new ExpressionException("Error");
+
+	private DivisionOperator() {
 	}
 
 	@Override
 	public double solve(Double leftElement, Double rightElement) throws ExpressionException {
 		if (rightElement == 0) {
 			throw new ExpressionException("It's impossible to divide by zero");
-		}else {
-		return leftElement / rightElement;
+		} else {
+			return leftElement / rightElement;
 		}
+	}
+	@Override
+	public Integer getPriority() {
+		return PRIORITY;
+	}
+
+	@Override
+	public Character getSymbol() {
+		return SYMBOL;
 	}
 }

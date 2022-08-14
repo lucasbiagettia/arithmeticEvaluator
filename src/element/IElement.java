@@ -4,7 +4,7 @@ public interface IElement {
 
 	public TypeOfElement getTypeOfElement();
 	
-	public int getPriority();
+	public Integer getPriority();
 	
 	public double solve (Double leftNode, Double rightNode);
 	

@@ -1,39 +1,32 @@
 package element.arithmeticOperators;
 
-import binaryTree.BinaryTree;
 import element.AbstractOperator;
 import element.IElement;
-import element.TypeOfElement;
-import expressionManager.Solution;
-import userMessages.ExpressionException;
 
-public final class MultiplicationOperator extends AbstractOperator{
-	private final MultiplicationOperator operator = new MultiplicationOperator();
-	private final int priority = 50;
-	private final Character symbol = '*';
-	
+public final class MultiplicationOperator extends AbstractOperator {
+	private static final MultiplicationOperator operator = new MultiplicationOperator();
+	private static final Integer PRIORITY = 50;
+	private static final Character SYMBOL = '*';
 
-	@Override
-	public IElement getInstance() {
+	public static MultiplicationOperator getInstance() {
 		return operator;
 	}
-	
-	private MultiplicationOperator() {}
-	
-	
+
+	private MultiplicationOperator() {
+	}
+
 	@Override
 	public double solve(Double leftElement, Double rightElement) {
 		return leftElement * rightElement;
 	}
 
-
-
 	@Override
-	public Solution solve(BinaryTree leftNode, BinaryTree rightNode, Solution solution) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getPriority() {
+		return PRIORITY;
 	}
 
-
-
+	@Override
+	public Character getSymbol() {
+		return SYMBOL;
+	}
 }

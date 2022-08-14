@@ -1,27 +1,18 @@
 package element.arithmeticOperators;
 
-import binaryTree.BinaryTree;
 import element.AbstractOperator;
 import element.IElement;
-import element.TypeOfElement;
-import userMessages.ExpressionException;
 
-public final class AdditionOperator extends AbstractOperator{
-	private final AdditionOperator operator = new AdditionOperator();
-	private final int priority = 10;
-	private final Character symbol = '+';
-		
-	@Override
-	public IElement getInstance() {
+public final class AdditionOperator extends AbstractOperator {
+	private static final AdditionOperator operator = new AdditionOperator();
+	private static final int PRIORITY = 10;
+	private static final Character SYMBOL = '+';
+
+	public static AdditionOperator getInstance() {
 		return operator;
 	}
-	
-	private AdditionOperator() {}
 
-	@Override
-	public int getPriority() {
-		// TODO Auto-generated method stub
-		return 0;
+	private AdditionOperator() {
 	}
 
 	@Override
@@ -30,17 +21,12 @@ public final class AdditionOperator extends AbstractOperator{
 	}
 
 	@Override
-	public static AbstractOperator getInstance(Character theSymbol) {
-		if (additionOperator == null) {
-			additionOperator = new AdditionOperator();
-		}
-		return additionOperator;
+	public Integer getPriority() {
+		return PRIORITY;
 	}
 
 	@Override
 	public Character getSymbol() {
-		return '+';
+		return SYMBOL;
 	}
-		
-
 }

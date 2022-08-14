@@ -1,9 +1,9 @@
 package element;
 
-import binaryTree.BinaryTree;
 
 public class Operand implements IElement {
 	Double value;
+	private final static Integer PRIORITY = 0;
 	
 	public Operand (double theValue) {
 		value = theValue;
@@ -15,13 +15,11 @@ public class Operand implements IElement {
 	}
 
 	@Override
-	public int getPriority() {
-		return 10;
+	public Integer getPriority() {
+		return PRIORITY;
 	}
 
-	@Override
-	public double solve(BinaryTree leftNode, BinaryTree rightNode) {
+	public double solve (Double leftNode, Double rightNode) {
 		return value;
 	}
-	
 }
