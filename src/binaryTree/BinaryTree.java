@@ -1,34 +1,27 @@
 package binaryTree;
-
-import java.util.Scanner;
-
 import element.IElement;
-import expressionManager.Expression;
-import userMessages.ExceptionMessages;
 import userMessages.ExpressionException;
-import userMessages.UserMessages;
 
 
 public class BinaryTree implements IBinaryTree {
-	IElement element;
-	BinaryTree leftBranch;
-	BinaryTree rightBranch;
+	private IElement element;
+	private BinaryTree leftBranch;
+	private BinaryTree rightBranch;
 
-	public BinaryTree() {
-		element = null;
+	public BinaryTree(IElement theElement) {
+		element = theElement;
 		leftBranch = null;
 		rightBranch = null;
 	}
 
-	public BinaryTree add (IElement element){
+	public BinaryTree add (IElement theElement){
 		if (this.element == null){
-			this.element = element;
+			this.element = theElement;
 			return this;
 		}
 		else 
 		{
-			BinaryTree actualNode = new BinaryTree();
-			actualNode.element=element;
+			BinaryTree actualNode = new BinaryTree(theElement);
 			//En este caso se mueve la raiz hacia este nodo y lo demás es agregado al brazo derecho
 			// TODO implement compareTo method
 			if (!this.element.hasMorePriority(actualNode.element)){
@@ -36,50 +29,20 @@ public class BinaryTree implements IBinaryTree {
 				return actualNode;
 			}else{
 				BinaryTree auxNode = this;
-				BinaryTree proxNode = this.rightBranch;
+				BinaryTree nextNode = this.rightBranch;
 				// Mientras la prioridad del de la izquierda sea mayor sigo bajando
-				while (proxNode != null && proxNode.element.hasMorePriority(actualNode.element)) {
+				while (nextNode != null && nextNode.element.hasMorePriority(actualNode.element)) {
 					auxNode = auxNode.rightBranch;
-					proxNode = proxNode.rightBranch;
+					nextNode = nextNode.rightBranch;
 				}
 				auxNode.rightBranch = actualNode;
-				actualNode.leftBranch = proxNode;
+				actualNode.leftBranch = nextNode;
 				return this;
 			}
 		}
 	}
 
 	public double inOrderResult() throws ExpressionException {
-		if (this != null) {
-			switch (this.element.getTypeOfElement()){
-			case OPERAND :
-				return this.element.getValue();
-
-			case arithmeticOperator:
-				return this.element.solveOperation(leftBranch.inOrderResult() , rightBranch.inOrderResult()) ;
-
-			case variable:
-				System.out.pr1neln (UserMessages.insterValueOfTheVariable(element.getVariableName()));
-				Expression subExpression;
-				try (Scanner scan = new Scanner(System.in)){
-					String str = scan.nextLine ();
-					subExpression = new Expression (str);
-				}
-				return subExpression.getFinalValue();
-			default:
-				break ;
-			}
-		}
-		// TODO ver esta excepción
-		throw new ExpressionException (ExceptionMessages.incompatibleElement( ));
-	}
-
-
-	public boolean inOrderComparison() throws ExpressionException {
-		if (this.leftBranch == null || this.rightBranch == null) {
-			throw new ExpressionException(ExceptionMessages.invalidOperation());
-		} else {
-			return this.leftBranch.inOrderResult() == this.rightBranch.inOrderResult();
-		}
+		return element.solve(leftBranch.inOrderResult(), rightBranch.inOrderResult());
 	}
 }

@@ -5,10 +5,9 @@ import userMessages.ExpressionException;
 
 public class ExpressionValidator {
 
-	private void validateExpression (StandarizedExpression standarizedExpression, 
+	static void validateExpression (String expressionText, 
 			String listOfReservedSymbols) throws ExpressionException {
-		String expressionText = standarizedExpression.getStandarizedExpression();
-		int countEqual = 0;
+
 		int parenthesiCounter = 0;
 		for (int i = 0; i<expressionText.length(); i++){
 			if (Character.isLetterOrDigit(expressionText.charAt(i)) ==
@@ -23,9 +22,6 @@ public class ExpressionValidator {
 			}
 		}
 		
-		if(countEqual>1){
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
 		if(parenthesiCounter!=0) {
 			throw new ExpressionException(ExceptionMessages.parenthesiError());
 		}

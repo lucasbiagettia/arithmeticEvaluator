@@ -4,7 +4,7 @@ import element.AbstractOperator;
 import element.IElement;
 
 public final class AdditionOperator extends AbstractOperator {
-	private static final AdditionOperator operator = new AdditionOperator();
+	private static  AdditionOperator operator = new AdditionOperator();
 	private static final int PRIORITY = 10;
 	private static final Character SYMBOL = '+';
 
