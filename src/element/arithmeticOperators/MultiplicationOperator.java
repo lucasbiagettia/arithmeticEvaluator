@@ -2,31 +2,31 @@ package element.arithmeticOperators;
 
 import binaryTree.BinaryTree;
 import element.AbstractOperator;
+import element.IElement;
 import element.TypeOfElement;
 import expressionManager.Solution;
 import userMessages.ExpressionException;
 
-public class MultiplicationOperator extends AbstractOperator{
-	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
+public final class MultiplicationOperator extends AbstractOperator{
+	private final MultiplicationOperator operator = new MultiplicationOperator();
 	private final int priority = 50;
-	private final int value = (Integer) null;
+	private final Character symbol = '*';
 	
-	@Override
-	public boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException {
-		//TODO definir expresión
-		throw new ExpressionException("Error");
-	}
 
+	@Override
+	public IElement getInstance() {
+		return operator;
+	}
+	
+	private MultiplicationOperator() {}
+	
+	
 	@Override
 	public double solve(Double leftElement, Double rightElement) {
 		return leftElement * rightElement;
 	}
 
-	@Override
-	public AbstractOperator getInstance(Character theSymbol) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public Solution solve(BinaryTree leftNode, BinaryTree rightNode, Solution solution) {

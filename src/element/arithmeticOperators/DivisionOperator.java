@@ -1,13 +1,21 @@
 package element.arithmeticOperators;
 
+import element.AbstractOperator;
 import element.IElement;
 import element.TypeOfElement;
 import userMessages.ExpressionException;
 
-public class DivisionOperator extends IElement{
-	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
+public final class DivisionOperator extends AbstractOperator{
+	private final DivisionOperator operator = new DivisionOperator();
 	private final int priority = 50;
-	private final int value = (Integer) null;
+	private final Character symbol = '/';
+	
+	@Override
+	public IElement getInstance() {
+		return operator;
+	}
+	
+	private DivisionOperator() {}
 	
 	@Override
 	public boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException {

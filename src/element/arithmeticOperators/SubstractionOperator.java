@@ -1,10 +1,19 @@
 package element.arithmeticOperators;
 
 import element.AbstractOperator;
+import element.IElement;
 
-public class SubstractionOperator extends AbstractOperator{
+public final class SubstractionOperator extends AbstractOperator{
+	private final SubstractionOperator operator = new SubstractionOperator();
 	private final int priority = 10;
+	private final Character symbol = '-';
 	
+	@Override
+	public IElement getInstance() {
+		return operator;
+	}
+	
+	private SubstractionOperator() {}
 	
 	@Override
 	public double solve(Double leftElement, Double rightElement) {
@@ -18,10 +27,7 @@ public class SubstractionOperator extends AbstractOperator{
 	}
 
 
-	@Override
-	public AbstractOperator getInstance(Character theSymbol) {
-		
-	}
+
 
 
 	@Override

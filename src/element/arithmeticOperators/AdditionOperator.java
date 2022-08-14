@@ -6,9 +6,15 @@ import element.IElement;
 import element.TypeOfElement;
 import userMessages.ExpressionException;
 
-public class AdditionOperator extends AbstractOperator{
-	
-	private static AdditionOperator additionOperator = null;
+public final class AdditionOperator extends AbstractOperator{
+	private final AdditionOperator operator = new AdditionOperator();
+	private final int priority = 10;
+	private final Character symbol = '+';
+		
+	@Override
+	public IElement getInstance() {
+		return operator;
+	}
 	
 	private AdditionOperator() {}
 
