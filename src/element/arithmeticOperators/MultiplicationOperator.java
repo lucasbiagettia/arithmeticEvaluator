@@ -18,7 +18,7 @@ public class MultiplicationOperator extends AbstractOperator{
 	}
 
 	@Override
-	public double solveArithmetic(Double leftElement, Double rightElement) {
+	public double solve(Double leftElement, Double rightElement) {
 		return leftElement * rightElement;
 	}
 

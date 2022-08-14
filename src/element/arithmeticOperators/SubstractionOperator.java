@@ -1,23 +1,33 @@
 package element.arithmeticOperators;
 
-import element.IElement;
-import element.TypeOfElement;
-import userMessages.ExpressionException;
+import element.AbstractOperator;
 
-public class SubstractionOperator extends IElement{
-	private final TypeOfElement typeOfElement = TypeOfElement.arithmeticOperator;
+public class SubstractionOperator extends AbstractOperator{
 	private final int priority = 10;
-	private final int value = (Integer) null;
+	
 	
 	@Override
-	public boolean solveBoolean(Double leftElement, Double rightElement) throws ExpressionException {
-		//TODO definir expresión
-		throw new ExpressionException("Error");
+	public double solve(Double leftElement, Double rightElement) {
+		return leftElement - rightElement;
 	}
 
+
 	@Override
-	public double solveArithmetic(Double leftElement, Double rightElement) {
-		return leftElement - rightElement;
+	public int getPriority() {
+		return priority;
+	}
+
+
+	@Override
+	public AbstractOperator getInstance(Character theSymbol) {
+		
+	}
+
+
+	@Override
+	public Character getSymbol() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -16,9 +16,9 @@ public class DivisionOperator extends IElement{
 	}
 
 	@Override
-	public double solveArithmetic(Double leftElement, Double rightElement) throws ExpressionException {
+	public double solve(Double leftElement, Double rightElement) throws ExpressionException {
 		if (rightElement == 0) {
-			throw new ExpressionException("Error");
+			throw new ExpressionException("It's impossible to divide by zero");
 		}else {
 		return leftElement / rightElement;
 		}

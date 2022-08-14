@@ -7,7 +7,6 @@ public abstract class AbstractOperator implements IElement {
 	public abstract Character getSymbol();
 	
 	public TypeOfElement getTypeOfElement() {
-		TypeOfElement.OPERATOR;
-	}
-	
+		return TypeOfElement.OPERATOR;
+	}	
 }
