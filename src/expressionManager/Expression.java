@@ -6,6 +6,7 @@ import java.util.List;
 import binaryTree.BinaryTree;
 import element.AbstractOperator;
 import element.Operand;
+import element.Variable;
 import element.arithmeticOperators.AdditionOperator;
 import element.arithmeticOperators.DivisionOperator;
 import element.arithmeticOperators.MultiplicationOperator;
@@ -21,11 +22,9 @@ public class Expression {
 
 	public Expression(String expressionText) throws ExpressionException {
 		addArithmeticOperators();
-
-//		expressionText = ExpressionStandarizer.standarizeExpression(expressionText);
-//		ExpressionValidator.validateExpression(expressionText, listOfReservedSymbols);
+		expressionText = ExpressionStandarizer.standarizeExpression(expressionText);
+		ExpressionValidator.validateExpression(expressionText, listOfReservedSymbols);
 		addElementsToBinaryTree(expressionText);
-		binaryTreeExpression.inOrderPrinter();
 		finalValue = binaryTreeExpression.inOrderResult();
 
 	}
@@ -50,32 +49,39 @@ public class Expression {
 		avaibleOperators.add(SubstractionOperator.getInstance());
 		avaibleOperators.add(DivisionOperator.getInstance());
 		avaibleOperators.add(MultiplicationOperator.getInstance());
-
-		listOfReservedSymbols += AdditionOperator.getInstance().getSymbol();
-		listOfReservedSymbols += SubstractionOperator.getInstance().getSymbol();
-		listOfReservedSymbols += DivisionOperator.getInstance().getSymbol();
-		listOfReservedSymbols += MultiplicationOperator.getInstance().getSymbol();
-
+		for (int i = 0; i < avaibleOperators.size(); i++) {
+			listOfReservedSymbols += avaibleOperators.get(i).getSymbol();
+		}
 	}
-
-	// TODO esto se debería resolver con un parser
+	
+	/**
+	 * Parse the expresion to add elements to the binaryTree
+	 * @param expressionText
+	 * @throws ExpressionException
+	 */
 	private void addElementsToBinaryTree(String expressionText) throws ExpressionException {
 		for (int i = 0; i < expressionText.length(); i++) {
-//			if (expressionText.charAt(i) == '(') {
-//				String aux = "";
-//
-//				while (i < expressionText.length() - 1 && expressionText.charAt(i) != ')') {
-//					i++;
-//					if (expressionText.charAt(i) != ')') {
-//						aux = aux + expressionText.charAt(i);
+			if (expressionText.charAt(i) == '(') {
+				String aux = "";
+
+				while (i < expressionText.length() - 1 && expressionText.charAt(i) != ')') {
+					i++;
+					if (expressionText.charAt(i) != ')') {
+						aux = aux + expressionText.charAt(i);
+					}
+				}
+				Expression subExpression = new Expression(aux, true);
+				Double auxResult = subExpression.getFinalValue();
+				binaryTreeExpression.add(new Operand(auxResult));
+			} 
+			else if (Character.isDigit(expressionText.charAt(i)) || expressionText.charAt(i) == '.') {
+//				Integer dotCount = 0;
+//				if ( expressionText.charAt(i) == '.') {
+//					dotCount ++;
+//					if (dotCount > 1) {
+//						throw new ExpressionException(ExceptionMessages.syntaxError());
 //					}
 //				}
-//				Expression subExpression = new Expression(aux, true);
-//				Double auxResult = subExpression.getFinalValue();
-//				binaryTreeExpression = binaryTreeExpression.add(new Operand(auxResult));
-//			} 
-//			else 
-			if (Character.isDigit(expressionText.charAt(i))) {
 				String aux = "";
 				while (i < expressionText.length() && Character.isDigit(expressionText.charAt(i))) {
 					aux = aux + expressionText.charAt(i);
@@ -83,12 +89,21 @@ public class Expression {
 				}
 				i--;
 				double auxD = Double.parseDouble(aux);
-				binaryTreeExpression = binaryTreeExpression.add(new Operand(auxD));
-			} else if (listOfReservedSymbols.indexOf(expressionText.charAt(i)) != -1) {
+				binaryTreeExpression.add(new Operand(auxD));
+			} else if (Character.isLetter(expressionText.charAt(i))) {
+				String aux = "";
+				while (i < expressionText.length() && Character.isLetter(expressionText.charAt(i))) {
+					aux = aux + expressionText.charAt(i);
+					i++;
+				}
+				i--;
+				binaryTreeExpression.add(new Variable(aux));
+			}
+			else if (listOfReservedSymbols.indexOf(expressionText.charAt(i)) != -1) {
 				for (int j = 0; j < avaibleOperators.size(); j++) {
 
 					if (expressionText.charAt(i) == avaibleOperators.get(j).getSymbol()) {
-						binaryTreeExpression = binaryTreeExpression.add(avaibleOperators.get(j));
+						binaryTreeExpression.add(avaibleOperators.get(j));
 					}
 				}
 			}

@@ -4,15 +4,15 @@ import userMessages.ExceptionMessages;
 import userMessages.ExpressionException;
 
 public class ExpressionStandarizer {
-	
+
 	static String standarizeExpression(String expressionText) throws ExpressionException {
 		expressionText = replaceSignsAndSpaces(expressionText);
-		if (expressionText.length() == 0){
+		if (expressionText.length() == 0) {
 			throw new ExpressionException(ExceptionMessages.invalidOperation());
 		}
-//		if (isValidSingleCharacterExpression(expressionText)) {
-//			throw new ExpressionException(ExceptionMessages.syntaxError());
-//		}
+		if (!isValidSingleCharacterExpression(expressionText)) {
+			throw new ExpressionException(ExceptionMessages.syntaxError());
+		}
 
 		expressionText = addMultiplicationOperatorWhenIsNeccesary(expressionText);
 
@@ -28,8 +28,11 @@ public class ExpressionStandarizer {
 	}
 
 	private static Boolean isValidSingleCharacterExpression(String expressionText) {
-		return (Character.isLetterOrDigit(expressionText.charAt(0)));
-
+		if (expressionText.length() == 1) {
+			return (Character.isLetterOrDigit(expressionText.charAt(0)));
+		} else {
+			return true;
+		}
 	}
 
 	/**
@@ -52,6 +55,8 @@ public class ExpressionStandarizer {
 				i++;
 			}
 		}
+		//TODO bug
+		
 		for (int i = 1; i < expressionText.length(); i++) {
 			if (Character.isLetter(expressionText.charAt(i))
 					&& Character.isLetterOrDigit(expressionText.charAt(i - 1))) {
