@@ -55,19 +55,10 @@ public class ExpressionStandarizer {
 				i++;
 			}
 		}
-		//TODO bug
-		
+
 		for (int i = 1; i < expressionText.length(); i++) {
-			if (Character.isLetter(expressionText.charAt(i))
-					&& Character.isLetterOrDigit(expressionText.charAt(i - 1))) {
-				expressionText = expressionText.substring(0, 1) + "*" + expressionText.substring(i);
-				i++;
-			}
-		}
-		for (int i = 0; i < expressionText.length(); i++) {
-			if (Character.isLetter(expressionText.charAt(i))
-					&& Character.isLetterOrDigit(expressionText.charAt(i - 1))) {
-				expressionText = expressionText.substring(0, 1) + "*" + expressionText.substring(i);
+			if (Character.isDigit(expressionText.charAt(i)) && Character.isLetter(expressionText.charAt(i - 1))) {
+				expressionText = expressionText.substring(0, i) + "*" + expressionText.substring(i);
 				i++;
 			}
 		}
