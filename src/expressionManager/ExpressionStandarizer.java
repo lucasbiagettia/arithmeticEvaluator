@@ -10,9 +10,9 @@ public class ExpressionStandarizer {
 		if (expressionText.length() == 0){
 			throw new ExpressionException(ExceptionMessages.invalidOperation());
 		}
-		if (!isValidSingleCharacterExpression(expressionText)) {
-			throw new ExpressionException(ExceptionMessages.syntaxError());
-		}
+//		if (isValidSingleCharacterExpression(expressionText)) {
+//			throw new ExpressionException(ExceptionMessages.syntaxError());
+//		}
 
 		expressionText = addMultiplicationOperatorWhenIsNeccesary(expressionText);
 
@@ -28,7 +28,7 @@ public class ExpressionStandarizer {
 	}
 
 	private static Boolean isValidSingleCharacterExpression(String expressionText) {
-		return (expressionText.length() == 1 && Character.isLetterOrDigit(expressionText.charAt(0)));
+		return (Character.isLetterOrDigit(expressionText.charAt(0)));
 
 	}
 

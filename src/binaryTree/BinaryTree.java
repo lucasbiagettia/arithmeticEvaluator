@@ -1,33 +1,30 @@
 package binaryTree;
+
 import element.IElement;
 import userMessages.ExpressionException;
-
 
 public class BinaryTree implements IBinaryTree {
 	private IElement element;
 	private BinaryTree leftBranch;
 	private BinaryTree rightBranch;
 
-	public BinaryTree(IElement theElement) {
-		element = theElement;
-		leftBranch = null;
-		rightBranch = null;
-	}
 
-	public BinaryTree add (IElement theElement){
-		if (this.element == null){
+	public BinaryTree add(IElement theElement) {
+		if (this.element == null) {
 			this.element = theElement;
 			return this;
-		}
-		else 
-		{
-			BinaryTree actualNode = new BinaryTree(theElement);
-			//En este caso se mueve la raiz hacia este nodo y lo demás es agregado al brazo derecho
+		} else {
+			
+			BinaryTree actualNode = new BinaryTree();
+			actualNode.add(theElement);
+			// En este caso se mueve la raiz hacia este nodo y lo demás es agregado al
+			// brazo derecho
 			// TODO implement compareTo method
-			if (!this.element.hasMorePriority(actualNode.element)){
+			
+			if (!this.element.hasMorePriority(actualNode.element)) {
 				actualNode.leftBranch = this;
 				return actualNode;
-			}else{
+			} else {
 				BinaryTree auxNode = this;
 				BinaryTree nextNode = this.rightBranch;
 				// Mientras la prioridad del de la izquierda sea mayor sigo bajando
@@ -41,8 +38,39 @@ public class BinaryTree implements IBinaryTree {
 			}
 		}
 	}
+	
+	public void inOrderPrinter() {
+		if (element == null) {
+			System.out.print("null");
+		}else {
+			System.out.print(element);
+		}
+		System.out.println(" ");
+		if (leftBranch ==null) {
+			System.out.print("null");
+		}else {
+			leftBranch.inOrderPrinter();
+		}
+		if (rightBranch ==null) {
+			System.out.print("null");
+		}else {
+			rightBranch.inOrderPrinter();
+		}
+	}
 
 	public double inOrderResult() throws ExpressionException {
-		return element.solve(leftBranch.inOrderResult(), rightBranch.inOrderResult());
+//		if (leftBranch == null) {
+//			return element.solve(null, rightBranch.inOrderResult());
+//
+//		} else if (rightBranch == null) {
+//			return element.solve(leftBranch.inOrderResult(), null);
+//		} else if (rightBranch == null && leftBranch == null) {
+//			return element.solve(null, null);
+//		} else {
+
+			return element.solve(leftBranch.inOrderResult(), rightBranch.inOrderResult());
+
+//		}
+
 	}
 }

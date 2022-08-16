@@ -1,7 +1,6 @@
 package element.arithmeticOperators;
 
 import element.AbstractOperator;
-import element.IElement;
 
 public final class MultiplicationOperator extends AbstractOperator {
 	private static final MultiplicationOperator operator = new MultiplicationOperator();

@@ -1,7 +1,6 @@
 package element.arithmeticOperators;
 
 import element.AbstractOperator;
-import element.IElement;
 import userMessages.ExpressionException;
 
 public final class DivisionOperator extends AbstractOperator {

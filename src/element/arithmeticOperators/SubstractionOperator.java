@@ -1,11 +1,10 @@
 package element.arithmeticOperators;
 
 import element.AbstractOperator;
-import element.IElement;
 
 public final class SubstractionOperator extends AbstractOperator {
 	private static final SubstractionOperator operator = new SubstractionOperator();
-	private static final Integer PRIORITY = 10;
+	private static final Integer PRIORITY = 100;
 	private static final Character SYMBOL = '-';
 
 	public static SubstractionOperator getInstance() {
