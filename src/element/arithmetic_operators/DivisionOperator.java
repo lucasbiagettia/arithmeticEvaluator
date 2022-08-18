@@ -1,7 +1,8 @@
-package element.arithmeticOperators;
+package element.arithmetic_operators;
 
 import element.AbstractOperator;
-import userMessages.ExpressionException;
+import user_messages.ExceptionMessages;
+import user_messages.ExpressionException;
 
 public final class DivisionOperator extends AbstractOperator {
 	private final static DivisionOperator operator = new DivisionOperator();
@@ -18,7 +19,7 @@ public final class DivisionOperator extends AbstractOperator {
 	@Override
 	public double solve(Double leftElement, Double rightElement) throws ExpressionException {
 		if (rightElement == 0) {
-			throw new ExpressionException("It's impossible to divide by zero");
+			throw new ExpressionException(ExceptionMessages.divideByZero());
 		} else {
 			return leftElement / rightElement;
 		}

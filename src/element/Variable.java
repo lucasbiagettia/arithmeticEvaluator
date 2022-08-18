@@ -2,8 +2,8 @@ package element;
 
 import java.util.Scanner;
 
-import expressionManager.Expression;
-import userMessages.UserMessages;
+import expression_manager.Expression;
+import user_messages.UserMessages;
 
 public class Variable implements IElement{
 	private final static Integer PRIORITY = 0;

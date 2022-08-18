@@ -1,4 +1,4 @@
-package userMessages;
+package user_messages;
 
 public class UserMessages {
 

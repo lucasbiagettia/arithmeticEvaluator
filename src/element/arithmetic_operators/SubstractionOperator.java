@@ -1,4 +1,4 @@
-package element.arithmeticOperators;
+package element.arithmetic_operators;
 
 import element.AbstractOperator;
 

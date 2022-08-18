@@ -1,17 +1,17 @@
-package expressionManager;
+package expression_manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import binaryTree.BinaryTree;
+import binary_tree.BinaryTree;
 import element.AbstractOperator;
 import element.Operand;
 import element.Variable;
-import element.arithmeticOperators.AdditionOperator;
-import element.arithmeticOperators.DivisionOperator;
-import element.arithmeticOperators.MultiplicationOperator;
-import element.arithmeticOperators.SubstractionOperator;
-import userMessages.ExpressionException;
+import element.arithmetic_operators.AdditionOperator;
+import element.arithmetic_operators.DivisionOperator;
+import element.arithmetic_operators.MultiplicationOperator;
+import element.arithmetic_operators.SubstractionOperator;
+import user_messages.ExpressionException;
 
 public class Expression {
 

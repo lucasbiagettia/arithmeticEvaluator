@@ -1,4 +1,4 @@
-package binaryTree;
+package binary_tree;
 
 import element.IElement;
 
@@ -31,14 +31,14 @@ public class Node {
 		this.rightBranch = rightBranch;
 	}
 	
-	public Double solveBinary() {
+	public Double solveBinaryTreeInOrder() {
 		Double leftValue = null;
 		Double rightValue = null;
 		try {
-			leftValue = leftBranch.solveBinary();
+			leftValue = leftBranch.solveBinaryTreeInOrder();
 		}catch (NullPointerException e){}
 		try {
-			rightValue = rightBranch.solveBinary();
+			rightValue = rightBranch.solveBinaryTreeInOrder();
 		}catch (NullPointerException e){}
 		return element.solve(leftValue,rightValue);
 	}

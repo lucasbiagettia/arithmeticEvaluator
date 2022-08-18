@@ -1,7 +1,7 @@
-package expressionManager;
+package expression_manager;
 
-import userMessages.ExceptionMessages;
-import userMessages.ExpressionException;
+import user_messages.ExceptionMessages;
+import user_messages.ExpressionException;
 
 public class ExpressionValidator {
 

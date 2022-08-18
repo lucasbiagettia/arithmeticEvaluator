@@ -1,7 +1,8 @@
-package expressionManager;
+package expression_manager;
 
-import userMessages.ExceptionMessages;
-import userMessages.ExpressionException;
+import element.arithmetic_operators.MultiplicationOperator;
+import user_messages.ExceptionMessages;
+import user_messages.ExpressionException;
 
 public class ExpressionStandarizer {
 
@@ -36,29 +37,29 @@ public class ExpressionStandarizer {
 	}
 
 	/**
-	 * This method add the symbol "*" when it helps to solve the operation Example:
-	 * it replaces 4(9) with 4*(9)
-	 * 
+	 * This method add the symbol "*" when it helps to solve the operation
+	 * Example: * it replaces 4(9) with 4*(9)
 	 * @param expressionText
 	 * @return
 	 */
 	private static String addMultiplicationOperatorWhenIsNeccesary(String expressionText) {
+		Character multiplicationSign = MultiplicationOperator.getInstance().getSymbol();
 		for (int i = 1; i < expressionText.length(); i++) {
 			if (expressionText.charAt(i) == '(' && Character.isLetterOrDigit(expressionText.charAt(i - 1))) {
-				expressionText = expressionText.substring(0, i) + "*" + expressionText.substring(i);
+				expressionText = expressionText.substring(0, i) + multiplicationSign + expressionText.substring(i);
 				i++;
 			}
 		}
 		for (int i = 0; i < expressionText.length() - 1; i++) {
 			if (expressionText.charAt(i) == ')' && Character.isLetterOrDigit(expressionText.charAt(i + 1))) {
-				expressionText = expressionText.substring(0, i) + "*" + expressionText.substring(i + 1);
+				expressionText = expressionText.substring(0, i) + multiplicationSign + expressionText.substring(i + 1);
 				i++;
 			}
 		}
 
 		for (int i = 1; i < expressionText.length(); i++) {
 			if (Character.isDigit(expressionText.charAt(i)) && Character.isLetter(expressionText.charAt(i - 1))) {
-				expressionText = expressionText.substring(0, i) + "*" + expressionText.substring(i);
+				expressionText = expressionText.substring(0, i) + multiplicationSign + expressionText.substring(i);
 				i++;
 			}
 		}
