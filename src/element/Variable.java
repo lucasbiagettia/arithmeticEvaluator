@@ -3,6 +3,7 @@ package element;
 import java.util.Scanner;
 
 import expressionManager.Expression;
+import userMessages.UserMessages;
 
 public class Variable implements IElement{
 	private final static Integer PRIORITY = 0;
@@ -25,7 +26,7 @@ public class Variable implements IElement{
 	@Override
 	public double solve(Double leftNode, Double rightNode) {
 		try(Scanner scanner = new Scanner(System.in);){
-			System.out.println("Please ingress the value of "+ variable);
+			System.out.println(UserMessages.askForVariableValue()+ variable);
 			String newStringExpression = scanner.nextLine();
 			Expression newExpression =  new Expression (newStringExpression);
 			return newExpression.getFinalValue();
