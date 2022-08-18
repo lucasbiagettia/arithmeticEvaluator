@@ -46,6 +46,7 @@ Simple interpreter that, when given an arithmetic expression as a string, can re
 # Next Steps 
 - Create an OperatorFactory thath given the symbol return the correct Operator
 - Create an user_interface
+- The intelligence to know what type of element is and create this could be in the package element
 
 # Sequence Diagram
 ```mermaid
