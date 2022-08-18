@@ -1,5 +1,5 @@
 # Introduction:
-Simple interpreter that given an arithmetic expression as a string can return the value.
+Simple interpreter that, when given an arithmetic expression as a string, can return the value.
 
 # Packages
 ## program
