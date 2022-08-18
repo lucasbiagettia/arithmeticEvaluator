@@ -3,7 +3,6 @@ Simple interpreter that, when given an arithmetic expression as a string, can re
 
 # Packages
 ## program
-## [program]([https://github.com/lucasbiagettia/arithmeticEvaluator/tree/main/src/program])
 ### Responsability
 - Is only useful to show an example of how the evaluator works
 ### Dependences
