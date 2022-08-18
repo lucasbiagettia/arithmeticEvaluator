@@ -48,22 +48,14 @@ Simple interpreter that given an arithmetic expression as a string can return th
 - Create an user_interface
 
 # Sequence Diagram
-
 ```mermaid
-Sequence diagram
 sequenceDiagram
-    participant program
-    participant expression_manager
-    participant element
-    participant binary_tree
-    program->>expression_manager: Operation as a string
-   
+    program->>+expression_manager: Expression as String
+    expression_manager->>element: Parsed element as String
+    element --> element: Convert String to IElement
+    element ->> expression_manager: IElement as Object
+    expression_manager->> binary_tree: IElement
+    binary_tree --> binary_tree: priorize IElement
+    binary_tree ->> expression_manager: priorized BinaryTree
+    expression_manager ->> program: Result as a Double   
 ```
-
- loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
