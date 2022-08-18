@@ -1,41 +1,50 @@
+# Introduction:
 Simple interpreter that given an arithmetic expression as a string can return the value.
 
-Packages
+# Packages
+## program
+### Responsability
+- Is only useful to show an example of how the evaluator works
+### Dependences:
+- expression_manager
 
-Program
-Responsability
-Is only a class to give an exapte of how the Evaluator works:
-Client
-- ExpressionManager
+## expression_manager
+### Responsabilities
+- Parse the expression
+- Validate the expression
+- Create all the elements of the expression
+- Add the elements to a binaryTree
+### Client
+- Program
+### Dependences
+- element
+- binary_tree
 
-Elements
-Responsabilities: Provide objects that can instance all the elements of the operation.
+## element
+### Responsabilities- Provide objects that can instance all the elements of the operation
 - Provide a global point of acces to the operators.
 - Construct operators
 - Construct variables
-Client
+### Client
 - Expressions
 
-user_messages
+## user_messages
+### Responsabilities
 - Centralize all the messages that the final user could see.
 - Centralize all the exceptions of the evaluator
-Client
+### Client
 - All Packages
 
-Next Steps 
+## binary_tree
+### Responsabilities
+- Provide usefull clases to make a BinaryTree
+- Provide algorithms to pass over the BinaryTree
+- Order IElements in BynaryTrees in base on their priority
+### Client:
+- expression_manager
+
+# Next Steps 
 - Create an OperatorFactory thath given the symbol return the correct Operator
 - Create an user_interface
 
-binaryTree
-almost finished
-2 days ago
-element
-fix parser
-3 days ago
-expressionManager
-finished
-2 days ago
-program
-almost finished
-2 days ago
-userMessages
+# Diagram
