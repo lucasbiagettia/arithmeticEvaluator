@@ -5,7 +5,7 @@ Simple interpreter that given an arithmetic expression as a string can return th
 ## program
 ### Responsability
 - Is only useful to show an example of how the evaluator works
-### Dependences:
+### Dependences
 - expression_manager
 
 ## expression_manager
@@ -26,7 +26,7 @@ Simple interpreter that given an arithmetic expression as a string can return th
 - Construct operators
 - Construct variables
 ### Client
-- Expressions
+- Expression
 
 ## user_messages
 ### Responsabilities
@@ -47,4 +47,19 @@ Simple interpreter that given an arithmetic expression as a string can return th
 - Create an OperatorFactory thath given the symbol return the correct Operator
 - Create an user_interface
 
-# Diagram
+# Sequence Diagram
+
+Sequence diagram
+sequenceDiagram
+    participant program
+    participant expression_manager
+    participant element
+    participant binary_tree
+    program->>expression_manager: Operation as a string
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
