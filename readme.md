@@ -49,6 +49,7 @@ Simple interpreter that given an arithmetic expression as a string can return th
 
 # Sequence Diagram
 
+```mermaid
 Sequence diagram
 sequenceDiagram
     participant program
@@ -63,3 +64,4 @@ sequenceDiagram
     John-->>Alice: Great!
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
+```
